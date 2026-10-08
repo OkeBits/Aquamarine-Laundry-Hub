@@ -1,0 +1,290 @@
+/* Aquamarine Laundry Management Service System - Design System */
+
+:root {
+    --aqua-primary: #00a896;
+    --aqua-dark: #028090;
+    --aqua-deep: #05668d;
+    --aqua-accent: #f0fdf4;
+    --aqua-light: #e0f2fe;
+    --aqua-shadow: rgba(0, 168, 150, 0.15);
+    
+    --bg-main: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    
+    --status-pending: #f59e0b;
+    --status-washing: #3b82f6;
+    --status-drying: #8b5cf6;
+    --status-ironing: #ec4899;
+    --status-ready: #10b981;
+    --status-claimed: #06b6d4;
+    --status-completed: #64748b;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 260px;
+    background: linear-gradient(180deg, var(--aqua-deep) 0%, var(--aqua-dark) 100%);
+    min-height: 100vh;
+    color: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.sidebar .brand {
+    padding: 1.5rem 1.25rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .brand i {
+    font-size: 1.6rem;
+    color: #a7f3d0;
+}
+
+.sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    border-radius: 8px;
+    margin: 0.25rem 0.75rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.sidebar .nav-link:hover, .sidebar .nav-link.active {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(5px);
+    transform: translateX(4px);
+}
+
+.sidebar .nav-link i {
+    width: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.sidebar-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 1rem 0;
+}
+
+/* Main Content Area */
+.main-wrapper {
+    margin-left: 260px;
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+.top-bar {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--border-color);
+}
+
+.user-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.avatar-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--aqua-primary);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+/* Dashboard Cards */
+.kpi-card {
+    background: var(--card-bg);
+    border-radius: 14px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px var(--aqua-shadow);
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.kpi-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 168, 150, 0.22);
+}
+
+.kpi-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.bg-aqua-primary { background: linear-gradient(135deg, #00a896, #028090); }
+.bg-aqua-success { background: linear-gradient(135deg, #10b981, #059669); }
+.bg-aqua-warning { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.bg-aqua-info    { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.bg-aqua-purple  { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+
+.kpi-title {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.kpi-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin: 0.25rem 0 0 0;
+}
+
+/* Status Badges */
+.badge-status {
+    padding: 0.4em 0.8em;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.status-Pending { background: #fef3c7; color: #92400e; }
+.status-Washing { background: #dbeafe; color: #1e40af; }
+.status-Drying { background: #f3e8ff; color: #6b21a8; }
+.status-Ironing { background: #fce7f3; color: #9d174d; }
+.status-Ready { background: #d1fae5; color: #065f46; }
+.status-Claimed { background: #cffaff; color: #155e75; }
+.status-Completed { background: #e2e8f0; color: #334155; }
+
+.status-FullyPaid { background: #d1fae5; color: #065f46; }
+.status-PartiallyPaid { background: #fef3c7; color: #92400e; }
+
+/* Table Customization */
+.table-custom {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    border: 1px solid var(--border-color);
+}
+
+.table-custom th {
+    background: #f1f5f9;
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 1rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.table-custom td {
+    padding: 0.9rem 1rem;
+    vertical-align: middle;
+    color: var(--text-main);
+    font-size: 0.92rem;
+}
+
+/* Receipt Print Styling */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #printableReceipt, #printableReceipt * {
+        visibility: visible;
+    }
+    #printableReceipt {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        padding: 20px;
+    }
+    .no-print {
+        display: none !important;
+    }
+}
+
+.receipt-card {
+    max-width: 480px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px dashed #cbd5e1;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.receipt-header {
+    text-align: center;
+    border-bottom: 2px dashed #94a3b8;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.receipt-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--aqua-dark);
+}
+
+/* Auth Login Page */
+.login-body {
+    background: linear-gradient(135deg, #05668d 0%, #00a896 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
